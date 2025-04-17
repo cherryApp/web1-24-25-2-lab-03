@@ -17,6 +17,21 @@ const generateTable = (tableRows = []) => {
         tr.appendChild(th);
         th.innerText = key;
     });
+
+    // Tbody
+    const tbody = document.createElement('tbody');
+    table.appendChild(tbody);
+
+    tableRows.forEach( row => {
+        const tr = document.createElement('tr');
+        tbody.appendChild(tr);
+
+        keys.forEach( key => {
+            const td = document.createElement('td');
+            tr.appendChild(td);
+            td.innerText = row[key];
+        });
+    });
 };
 
 getAll().then( data => generateTable(data) );
